@@ -35,5 +35,14 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anilmodest/mhw.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anilmodest/mhw/issues"
+  },
+  "homepage": "https://github.com/anilmodest/mhw#readme"
 }
