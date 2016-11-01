@@ -14,7 +14,6 @@ const rootReducer = combineReducers({
     tabSelector: MenuSelector
 })
 
-
 let store = createStore(rootReducer)
 
 class App extends Component {
