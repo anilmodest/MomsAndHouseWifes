@@ -13,16 +13,23 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import App from './container/app.jsx';
 import Home from './components/Home.jsx'
 import ShareIt from './components/ShareIt.jsx'
-
+import Arts from './components/Contribution.jsx'
+import ClothDesigns from './components/Clothings.jsx'
 
 import SignInReducer from './reducers/SignInSelector.js'
+import ImageSelector from  './reducers/ImageSelector'
+import ProfileDialogSelector from './reducers/ProfileDialogSelector'
+import FilterPictureSelector from './reducers/FilterPictureSelector'
 
 
 
 const store = createStore(
     combineReducers({
         routing: routerReducer,
-        signInDialogState: SignInReducer
+        signInDialogState: SignInReducer,
+        selectedImage: ImageSelector,
+        selectedProfile: ProfileDialogSelector,
+        selectedFilter: FilterPictureSelector
     })
 )
 
@@ -40,6 +47,8 @@ class Index extends Component{
                     <Route path="/" component={App}>
                         <IndexRoute component={Home} />
                         <Route path="/shareit" component={ShareIt}/>
+                        <Route path="/arts" component={Arts}/>
+                        <Route path="/clothes" component={ClothDesigns}/>
                     </Route>
                 </Router>
             </Provider>

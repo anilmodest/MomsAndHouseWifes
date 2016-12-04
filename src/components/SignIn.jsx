@@ -56,18 +56,16 @@ class SignIn extends React.Component {
                     modal={true}
                     open={this.state.open}
                     onRequestClose={this.handleClose.bind(this) }
-                    contentStyle={customContentStyle}
-
-                >
+                    contentStyle={customContentStyle}>
                     <div>
                         <TextField
                             hintText="Enter User Name"
                         />
-                        <br />
+                        <br/>
                         <TextField
                             hintText="Password"
                         />
-                        <br />
+                        <br/>
                         </div>
                 </Dialog>
             </div>

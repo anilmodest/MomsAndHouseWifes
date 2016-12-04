@@ -3,8 +3,6 @@
  */
 import React, {Component} from 'react'
 import MainContent from './MainContent.jsx'
-import { Grid, Row, Col} from 'react-bootstrap'
-import { SideNav, Nav } from 'react-sidenav';
 
 class Home extends Component {
     constructor(props) {
@@ -16,7 +14,6 @@ class Home extends Component {
         return (
             <div className="table" >
                 <div className="tr">
-
                     <span className="td">
                             <MainContent/>
                     </span>

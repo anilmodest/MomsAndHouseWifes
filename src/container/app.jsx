@@ -2,15 +2,16 @@ import React, {Component} from 'react';
 import { LinkContainer } from 'react-router-bootstrap'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { OverlayTrigger,Popover } from 'react-bootstrap'
 
 import {cyan500} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { AppBar, IconButton, RaisedButton , Drawer} from 'material-ui'
+import { AppBar, IconButton, RaisedButton , Drawer, FlatButton} from 'material-ui'
 import NavigationClose from 'material-ui/svg-icons/navigation/close'
 import injectTapEventPlugin from 'react-tap-event-plugin'
-import Divider from 'material-ui/Divider';
+import Divider from 'material-ui/Divider'
+import ActionAndroid from 'material-ui/svg-icons/action/android';
+import {fullWhite} from 'material-ui/styles/colors';
 
 
 import SignIn from '../components/SignIn.jsx'
@@ -33,11 +34,7 @@ const style = {
     margin: 10
 };
 
-const popoverClickRootClose = (
-    <Popover id="popover-trigger-click-root-close" title="Please fill in details...">
-        <SignIn/>
-    </Popover>
-);
+
 
 export function signInDialogState()
 {
@@ -51,8 +48,8 @@ export function signInDialogState()
 
 // MuiThemeProvider takes the theme as a property and passed it down the hierarchy.
 class App extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
                       open: false}
     }
@@ -72,7 +69,6 @@ class App extends Component {
 
 
     render () {
-
         return (
 
             <MuiThemeProvider muiTheme={muiTheme}>
@@ -80,31 +76,38 @@ class App extends Component {
 
 
                     <div>
-                        <AppBar title={<LinkContainer to="/"><p>Beautiful World <sub>@ powered by housewives</sub></p></LinkContainer>} onLeftIconButtonTouchTap={this.handleToggle.bind(this)}>
+                        <AppBar title={
+                            <LinkContainer to="/">
+                                <p>Beautiful World <sub>@ powered by housewives</sub></p>
+                            </LinkContainer>} onLeftIconButtonTouchTap={this.handleToggle.bind(this)}>
                             <LinkContainer to="shareit">
-                            <RaisedButton label="Share It!" style={style} />
-                                </LinkContainer>
-
-
-
-
+                                <RaisedButton label="Share It!" style={style} />
+                            </LinkContainer>
                             <RaisedButton label="About" style={style} />
                             <SignIn/>
-                            </AppBar>
+                        </AppBar>
                         <div>
 
-                            <Drawer openSecondary={false} open={this.state.open}>
+                            <Drawer openSecondary={false} open={this.state.open} >
+
                                 <AppBar title="Menu" onLeftIconButtonTouchTap={this.handleToggle.bind(this)}
                                         iconElementLeft={<IconButton><NavigationClose /></IconButton>}/>
-                                <RaisedButton label="Arts" fullWidth={true} />
-                                <Divider inset={true}/>
-                                <RaisedButton label="Cloth Designs" fullWidth={true} />
-                                <Divider/>
-                                <RaisedButton label="Photos" fullWidth={true} />
 
+                                <LinkContainer to="arts">
+                                    <RaisedButton label="Arts" fullWidth={true} onTouchTap={this.handleToggle.bind(this)}/>
+                                </LinkContainer>
+                                <Divider inset={true}/>
+                                <LinkContainer to="clothes">
+                                    <RaisedButton label="Cloth Designs" fullWidth={true}  onTouchTap={this.handleToggle.bind(this)}/>
+                                </LinkContainer>
+                                    <Divider/>
+                                <LinkContainer to="photos">
+                                    <RaisedButton label="Photos" fullWidth={true} onTouchTap={this.handleToggle.bind(this)} />
+                                </LinkContainer>
                             </Drawer>
                         </div>
                     </div>
+
                     {this.props.children}
                     </div>
             </MuiThemeProvider>
